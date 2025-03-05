@@ -40,17 +40,20 @@ void merge(int arr[],int lb,int mid,int ub){
             k++;
         }
     }
+    // at last again copy all the elements of new array b to the old array arr where after merging all the elements are sorted 
     for(k=0;k<=ub;k++){
         arr[k] = b[k];
     }
 }
 
+// this function will divide the main array into two subarrays and do this process recursively untill lb is greater than ub
 void merge_sort(int arr[],int lb,int ub){
     if(lb<ub){
+        // at first calculate mid
         int mid = lb+(ub-lb)/2;
-        merge_sort(arr,lb,mid);
-        merge_sort(arr,mid+1,ub);
-        merge(arr,lb,mid,ub);
+        merge_sort(arr,lb,mid);   // left subarray
+        merge_sort(arr,mid+1,ub); // right subarray
+        merge(arr,lb,mid,ub);     // merge the subarrays imto a new array where elements are sorted
     }
 }
 
