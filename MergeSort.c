@@ -1,5 +1,6 @@
 #include<stdio.h>
 
+// this function will merge two sub arrays into a sorted array
 void merge(int arr[],int lb,int mid , int ub){
     int i,j,k;
     int b[ub+1];
