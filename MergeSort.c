@@ -41,7 +41,7 @@ void merge(int arr[],int lb,int mid,int ub){
         }
     }
     // at last again copy all the elements of new array b to the old array arr where after merging all the elements are sorted 
-    for(k=0;k<=ub;k++){
+    for(k=lb;k<=ub;k++){
         arr[k] = b[k];
     }
 }
