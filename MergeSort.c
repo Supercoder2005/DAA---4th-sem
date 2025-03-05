@@ -1,23 +1,30 @@
 #include<stdio.h>
 
 // this function will merge two sub arrays into a sorted array
-void merge(int arr[],int lb,int mid , int ub){
+void merge(int arr[],int lb,int mid,int ub){
     int i,j,k;
-    int b[ub+1];
-    i=lb;
-    j=mid+1;
-    k=lb;
+
+    int b[ub+1];   //a new array is introduced of the same size of the user given array arr to store the sorted elements after merging
+    i=lb;         // i pointer will indicate the elements of left subarray
+    j=mid+1;     // j pointer will indicate the elements of right subarray
+    k=lb;       // k pointer will indicate the elements of new sorted and merged array
+
+    // the left subarray is started from lb and ends at mid 
+    // the right subarray is started from (mid+1) and ends at ub
     while(i<=mid && j<=ub){
-        if(arr[i] >= arr[j]){
+        // checks if i th element of left subarray is greater than j th element of right subarray, then place the smaller element of the right subarray at the kth index of new array b
+        if(arr[i] >= arr[j]){ 
             b[k] = arr[j];
             j++;
         }
+        // checks if i th element of left subarray is smaller than j th element of right subarray, then place the smaller element of the left subarray at the kth index of new array b
         else if(arr[i] <= arr[j]){
             b[k] = arr[i];
             i++;
         }
         k++;
     }
+    // if all the elements of left subarray is visited but still some elements are left in right subarray then , simply copy them from right subarray to the new array b
     if(i>mid){
         while(j <= ub){
             b[k] = arr[j];
@@ -25,6 +32,7 @@ void merge(int arr[],int lb,int mid , int ub){
             k++;
         }
     }
+    // if all the elements of right subarray is visited but still some elements are left in left subarray then , simply copy them from left subarray to the new array b
     else{
         while(i <= mid){
             b[k] = arr[i];
