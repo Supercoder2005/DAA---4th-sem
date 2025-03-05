@@ -1,6 +1,10 @@
 #include<stdio.h>
 
 int partition(int arr[],int lb,int ub){
+    int pivot,start,end;
+    pivot = arr[lb];
+    start = lb;
+    end = ub; 
     
 }
 
