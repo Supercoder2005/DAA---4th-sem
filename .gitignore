@@ -1,0 +1,44 @@
+# Compiled object files
+*.o
+
+# Compiled binary files
+*.out
+*.exe
+*.a
+*.so
+
+# Precompiled Headers
+*.gch
+
+# Debug files
+*.dSYM/
+*.d
+
+# Dependency files
+*.dep
+
+# Backup files
+*~
+*.bak
+*.swp
+
+# Build directory
+/build/
+/bin/
+/obj/
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Visual Studio Code
+.vscode/
+
+# CLion project files
+.idea/
+cmake-build-*/
+
+# Logs
+*.log
