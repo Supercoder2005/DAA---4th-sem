@@ -9,10 +9,16 @@ int solutionCount = 0;   // Counter to keep track of solutions
 
 // Function to print the board
 void printBoard() {
-    printf("Solution %d:\n", ++solutionCount);
+    solutionCount ++;
+    printf("Solution %d:\n", solutionCount);
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            printf("%c ", board[i][j] ? 'Q' : '.');
+            if(board[i][j]==1){
+                printf(" Q ");
+            }
+            else{
+                printf(" . ");
+            }
         }
         printf("\n");
     }
