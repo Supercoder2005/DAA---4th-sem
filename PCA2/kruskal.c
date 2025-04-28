@@ -20,12 +20,12 @@ void sortEdges(){
                 int temp3 = edge[i][2];
 
                 edge[i][0] = edge[j][0];
-                edge[i][1] = edge[j][0];
-                edge[i][2] = edge[j][0];
+                edge[i][1] = edge[j][1];
+                edge[i][2] = edge[j][2];
 
                 edge[j][0] = temp1;
                 edge[j][1] = temp2;
-                edge[i][2] = temp3;
+                edge[j][2] = temp3;
             }
         }
     }
