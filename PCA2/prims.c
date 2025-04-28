@@ -64,7 +64,7 @@ int main(){
     }
 
     // initialize for the 0th vertex or the source vertex
-    visited[0] = 1; // mark the 0th vertex as visited
+    //visited[0] = 1; // mark the 0th vertex as visited
     parent[0] = -1; // as there will be no parent of the 0th node so to mark it as root node set it to -1
     minCost[0] = 0;
 
