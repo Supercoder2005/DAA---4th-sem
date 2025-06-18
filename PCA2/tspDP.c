@@ -17,7 +17,7 @@ int tsp(int currentCity,int count){ //  count = no of cities visited already
     }
 
     // memoization 
-    if(dp[currentCity][count]!= -1){ // if previously we have already calculated graph[city][count] return that for further calculation
+    if(dp[currentCity][count]!= -1){ // if previously we have already calculated dp[currentCity][count] return that for further calculation
         return dp[currentCity][count];
     }
 
