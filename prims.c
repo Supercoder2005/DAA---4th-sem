@@ -1,47 +1,58 @@
 #include<stdio.h>
 #include<limits.h>
-#define MAX 10
+#define MAX 100 
 
-void prim(int graph[MAX][MAX], int n){
-    int visited[MAX] = {0};
-    int parent[MAX] = {-1};
-    int weights[MAX] = {0};
-    visited[0] = 1;
-    for(int i=1; i<n; i++){
-        int minW = INT_MAX;
-        int minE = -1;
-        for(int j=0; j<n; j++){
-            if(visited[j]){
-                for(int k=0; k<n; k++){
-                    if(!visited[k] && graph[j][k] != 0 && graph[j][k] < minW){
-                        minW = graph[j][k];
-                        minE = k;
-                        parent[k] = j;
-                    }
-                }
+int graph[MAX][MAX];
+int n;
+int visited[MAX];
+int parent[MAX];
+int minCost[MAX];
+
+void printMST(){
+    int totalCost = 0;
+    for(int i=0;i<n;i++){
+        printf("\n %d -> %d:weight %d\n",parent[i],i,graph[parent[i]][i]);
+        totalCost += graph[parent[i]][i];
+    }
+    printf("\n The total cost of the MST is :%d",totalCost);
+}
+
+void prims(){
+    for(int i=0;i<n-1;i++){
+        int u = -1;
+        int min = INT_MAX;
+        for(int v=0;v<n;v++){
+            if(!visited[v] && minCost[v]<min){
+                min = minCost[v];
+                u = v;
             }
         }
-        visited[minE] = 1;
-        weights[minE] = minW;
+        visited[u] = 1;
+        for(int v=0;v<n;v++){
+            if(!visited[v] && graph[u][v] != 0 && graph[u][v]<minCost[v]){
+                minCost[v]=graph[u][v];
+                parent[v] = u;
+            }
+        }
     }
-    int total = 0;
-    for(int i=1; i<n; i++){
-        printf("%d - %d: %d\n", parent[i], i, weights[i]);
-        total += weights[i];
-    }
-    printf("Total Weight: %d", total);
+    printMST();
 }
 
 int main(){
-    int n;
-    printf("Enter number of nodes: ");
-    scanf("%d", &n);
-    int graph[MAX][MAX] ={0};
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++){
+    printf("\n Enter the no of vertices:");
+    scanf("%d",&n);
+    printf("\n Enter the adjacency matrix:\n");
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
             scanf("%d",&graph[i][j]);
         }
     }
-    prim(graph, n);
+    for(int i=0;i<n;i++){
+        visited[i] = 0;
+        minCost[i] = INT_MAX;
+    }
+    parent[0] = 0;
+    minCost[0] = 0; 
+    prims();
     return 0;
 }
